@@ -1,2 +1,3 @@
+20220309 : testar push
 20220309 : Verificar mensagem de erro no Linux
 20220309 : criar .gitignore
