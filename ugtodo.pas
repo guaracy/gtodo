@@ -154,12 +154,20 @@ end;
 
 procedure TForm1.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
-  { TODO : Processar a tecla Del para excluir a tarefa }
-  { TODO : Processar Esc para desmarcar edição da tarefa }
     case Key of
       VK_ESCAPE: begin edtMode:=False; edTarefa.Text:=''; end;
       VK_UP: begin if sgTarefas.Row>1 then sgTarefas.Row:=sgTarefas.Row-1; end;
       VK_DOWN: begin if sgTarefas.Row<sgTarefas.RowCount then sgTarefas.Row:=sgTarefas.Row+1; end;
+      VK_X:
+        begin
+          if not (ssCtrl in Shift) then exit;
+          if sgTarefas.Row<1 then exit;
+          if MessageDlg('Commit', sgTarefas.Cells[1,sgTarefas.Row]+#10#13#10#13'Deseja excluir a tarefa?', mtConfirmation, [mbYes, mbNo],0) = mrYes then begin
+            sgTarefas.DeleteRow(sgTarefas.Row);
+            edTarefa.Text:='';
+            sgTarefas.SaveToFile(todofn);
+          end;
+      end;
     end;
 end;
 
