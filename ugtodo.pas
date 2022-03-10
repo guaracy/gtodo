@@ -91,7 +91,7 @@ begin
     ShowMessage('ERROR : git add .'+sOut);
     exit;
   end;
-  if not RunCommandInDir(cDir,'git',['commit','-m',s],sOut,[poWaitOnExit,poStderrToOutPut,poNewConsole{poNoConsole}]) then begin
+  if not RunCommandInDir(cDir,'git',['commit','-m',s],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]) then begin
     ShowMessage('ERROR : git commit -m '+QuotedStr(s)+sOut);
     exit;
   end;

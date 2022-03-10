@@ -101,7 +101,8 @@ end;
 procedure TForm1.sgTarefasPrepareCanvas(sender: TObject; aCol, aRow: Integer;
   aState: TGridDrawState);
 begin
-  if aRow<1 then exit;
+  if (aRow < 1) or (aCol < 1) then exit;
+  if gdSelected in aState then exit;
   case sgTarefas.Cells[1,aRow][1] of
     '-' : sgTarefas.Canvas.Font.Color:=clGreen;
     '+' : sgTarefas.Canvas.Font.Color:=clRed;
