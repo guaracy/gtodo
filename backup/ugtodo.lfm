@@ -6,7 +6,7 @@ object Form1: TForm1
   Caption = 'Form1'
   ClientHeight = 308
   ClientWidth = 781
-  OnCreate = FormCreate
+  OnShow = FormShow
   Position = poScreenCenter
   object Panel1: TPanel
     Left = 0
@@ -49,6 +49,6 @@ object Form1: TForm1
     OnDblClick = sgTarefasDblClick
     OnKeyUp = sgTarefasKeyUp
     OnPrepareCanvas = sgTarefasPrepareCanvas
-    OnSelectCell = sgTarefasSelectCell
+    OnSelection = sgTarefasSelection
   end
 end

@@ -17,7 +17,7 @@ type
     Panel1: TPanel;
     sgTarefas: TStringGrid;
     procedure edTarefaKeyPress(Sender: TObject; var Key: char);
-    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure sgTarefasColRowMoved(Sender: TObject; IsColumn: Boolean; sIndex,
       tIndex: Integer);
     procedure sgTarefasDblClick(Sender: TObject);
@@ -25,13 +25,13 @@ type
       );
     procedure sgTarefasPrepareCanvas(sender: TObject; aCol, aRow: Integer;
       aState: TGridDrawState);
-    procedure sgTarefasSelectCell(Sender: TObject; aCol, aRow: Integer;
-      var CanSelect: Boolean);
+    procedure sgTarefasSelection(Sender: TObject; aCol, aRow: Integer);
   private
     tDir,
     cDir : string;
     chgfn,
     todofn:string;
+    edtMode,
     notGit:Boolean;
 
   public
@@ -50,7 +50,7 @@ implementation
 
 { TForm1 }
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TForm1.FormShow(Sender: TObject);
 var
   sOut: string;
 begin
@@ -71,7 +71,6 @@ begin
   notGit:=False;
   tDir := Trim(sOut);
   Caption := 'gtodo : (GIT) - '+tDir;
-
 end;
 
 procedure TForm1.sgTarefasColRowMoved(Sender: TObject; IsColumn: Boolean;
@@ -128,10 +127,13 @@ begin
   end;
 end;
 
-procedure TForm1.sgTarefasSelectCell(Sender: TObject; aCol, aRow: Integer;
-  var CanSelect: Boolean);
+procedure TForm1.sgTarefasSelection(Sender: TObject; aCol, aRow: Integer);
 begin
-{ DONE : Atualizar texto para a edição }
+  { TODO : Atualizar texto para a edição }
+  if aCol=0 then exit;
+  edtMode:=True;
+  edTarefa.Text:=sgTarefas.Cells[1,sgTarefas.Row];
+  edTarefa.SetFocus;
 end;
 
 procedure TForm1.edTarefaKeyPress(Sender: TObject; var Key: char);
@@ -141,8 +143,13 @@ begin
   if Key <> #13 then exit;
   s:=Trim(edTarefa.Text);
   if s='' then exit;
-  sgTarefas.RowCount:=sgTarefas.RowCount+1;
-  sgTarefas.Cells[1,sgTarefas.RowCount-1]:=s;
+  if edtMode then begin
+    sgTarefas.Cells[1,sgTarefas.Row]:=s;
+    edtMode:=False;
+  end else begin
+    sgTarefas.RowCount:=sgTarefas.RowCount+1;
+    sgTarefas.Cells[1,sgTarefas.RowCount-1]:=s;
+  end;
   sgTarefas.SaveToFile(todofn);
   edTarefa.Text:='';
 end;
