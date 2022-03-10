@@ -2,7 +2,7 @@
 <CONFIG>
   <grid version="3">
     <saveoptions create="True" position="True" content="True"/>
-    <design columncount="2" rowcount="5" fixedcols="1" fixedrows="1" defaultcolwidth="40" isdefaultcolwidth="1" defaultrowheight="23" isdefaultrowheight="0" color="clWindow">
+    <design columncount="2" rowcount="4" fixedcols="1" fixedrows="1" defaultcolwidth="40" isdefaultcolwidth="1" defaultrowheight="23" isdefaultrowheight="0" color="clWindow">
       <columns columnsenabled="True" columncount="1">
         <column0>
           <index value="0"/>
@@ -41,15 +41,14 @@
         <goScrollToLastRow value="False"/>
       </options>
     </design>
-    <position topleftcol="1" topleftrow="1" col="1" row="1">
-      <selection left="1" top="1" right="1" bottom="1"/>
+    <position topleftcol="1" topleftrow="1" col="1" row="3">
+      <selection left="1" top="3" right="1" bottom="3"/>
     </position>
     <content>
-      <cells cellcount="4">
+      <cells cellcount="3">
         <cell1 column="1" row="1" text="Exclusão de tarefa"/>
         <cell2 column="1" row="2" text="Alteração de tarefa"/>
         <cell3 column="1" row="3" text="- incluir push?"/>
-        <cell4 column="1" row="4" text="Colocar imagens no README"/>
       </cells>
     </content>
   </grid>

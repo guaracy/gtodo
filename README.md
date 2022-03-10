@@ -1,10 +1,6 @@
 # gtodo
 
-
-
 É um projeto simples e sem frescuras para o programador criar uma lista de tarefas durante o desenvolvimento de programas. A medida que as tarefas são completadas, ela é excluída da lista (arquivo *gtodo.txt*) e incluída no arquivo *changelog.txt*. Caso esteja trabalhando em uma pasta gerenciada pelo git, o programa automaticamente executa um **git add .** e um **git commit -m tarefa**. São os únicos comandos que o programa conhece do git
-
-
 
 ## Instalação
 
@@ -26,8 +22,6 @@ Entre na pasta que você deseja controla e execute o gtodo.
    3. Coloque $ProjPath() no diretório de trabalho
       ![](images/editarferramenta.png)
 4. OK e Ok para fechar as janelas e gravar as alterações.
-
- 
 
 #### Executar
 
