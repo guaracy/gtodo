@@ -1,6 +1,14 @@
 # gtodo
 
+O Lazarus não tem uma maior integração com o git mas é um excelente editor para o que se propõe. O meu problema era adicionar os arquivos e as mensagens de commit. Sair do editor, digitar *git add*, *git commit -m mensagem*. Na correria, acabava com um *git add .*, *git commit -m 'alterações diversas'* e *git push*. No linux nem é tão problemático pois, como uso o zsh+ohmyzsh, basta *ga .*, *gcmsg 'mensagem'* e *gp*. 
+
+
+
 É um projeto simples e sem frescuras para o programador criar uma lista de tarefas durante o desenvolvimento de programas. A medida que as tarefas são completadas, ela é excluída da lista (arquivo *gtodo.txt*) e incluída no arquivo *changelog.txt*. Caso esteja trabalhando em uma pasta gerenciada pelo git, o programa automaticamente executa um **git add .** e um **git commit -m tarefa**. São os únicos comandos que o programa conhece do git
+
+
+
+Não tem integração com o ToDo do Lazarus mas é possível criar a tarefa utilizando  Ctrl+Shift+T o que facilita a localização da tarefa nos fontes. Após concluir a tarefa, copie, abra o gtodo, inclua a tarefa e marque como concluída.
 
 ## Instalação
 

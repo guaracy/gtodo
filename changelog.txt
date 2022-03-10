@@ -1,3 +1,4 @@
+2022.03.09 : Alterações no README
 2022.03.09 : Gravar novo vídeo
 2022.03.09 : Gravar vídeo
 2022.03.09 : Mais espaço na confirmação da conclusão da tarefa

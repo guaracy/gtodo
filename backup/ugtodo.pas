@@ -21,8 +21,12 @@ type
     procedure sgTarefasColRowMoved(Sender: TObject; IsColumn: Boolean; sIndex,
       tIndex: Integer);
     procedure sgTarefasDblClick(Sender: TObject);
+    procedure sgTarefasKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState
+      );
     procedure sgTarefasPrepareCanvas(sender: TObject; aCol, aRow: Integer;
       aState: TGridDrawState);
+    procedure sgTarefasSelectCell(Sender: TObject; aCol, aRow: Integer;
+      var CanSelect: Boolean);
   private
     tDir,
     cDir : string;
@@ -84,7 +88,7 @@ var
 begin
   if sgTarefas.RowCount=1 then exit;
   s:=sgTarefas.Cells[1,sgTarefas.Row];
-  if MessageDlg('Commit', s+#10#13'Deseja informar como concluída a tarefa?', mtConfirmation, [mbYes, mbNo],0) = mrYes then begin
+  if MessageDlg('Commit', s+#10#13#10#13'Deseja informar como concluída a tarefa?', mtConfirmation, [mbYes, mbNo],0) = mrYes then begin
     lst := TStringList.Create();
     if FileExists(chgfn) then
       lst.LoadFromFile(chgfn);
@@ -106,6 +110,13 @@ begin
   ShowMessage('COMMIT OK'#10#13+sOut);
 end;
 
+procedure TForm1.sgTarefasKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+{ TODO : Processar a tecla Del para excluir a tarefa }
+{ TODO : Processar Esc para desmarcar edição da tarefa }
+end;
+
 procedure TForm1.sgTarefasPrepareCanvas(sender: TObject; aCol, aRow: Integer;
   aState: TGridDrawState);
 begin
@@ -115,6 +126,12 @@ begin
     '-' : sgTarefas.Canvas.Font.Color:=clGreen;
     '+' : sgTarefas.Canvas.Font.Color:=clRed;
   end;
+end;
+
+procedure TForm1.sgTarefasSelectCell(Sender: TObject; aCol, aRow: Integer;
+  var CanSelect: Boolean);
+begin
+{ DONE : Atualizar texto para a edição }
 end;
 
 procedure TForm1.edTarefaKeyPress(Sender: TObject; var Key: char);
