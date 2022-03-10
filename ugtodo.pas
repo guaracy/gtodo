@@ -80,7 +80,7 @@ begin
     lst := TStringList.Create();
     if FileExists(chgfn) then
       lst.LoadFromFile(chgfn);
-    lst.Insert(0,FormatDateTime('YYYYMMDD : ',now)+s);
+    lst.Insert(0,FormatDateTime('YYYY.MM.DD : ',now)+s);
     lst.SaveToFile(chgfn);
     lst.Free;
   end else exit;

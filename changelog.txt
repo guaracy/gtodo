@@ -1,3 +1,4 @@
+2022.03.09 : Alteração no formato da data gravada no changelog.txt
 20220309 : Alterado texto para confirmação de conclusão da tarefa
 20220309 : Colocar imagens no README
 20220309 : + Gerar imagens
