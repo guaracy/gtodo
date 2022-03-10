@@ -45,7 +45,7 @@ object Form1: TForm1
     DefaultColWidth = 40
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowMoving, goRowSelect, goSmoothScroll, goFixedRowNumbering]
     TabOrder = 1
-    OnColRowExchanged = sgTarefasColRowExchanged
+    OnColRowMoved = sgTarefasColRowMoved
     OnDblClick = sgTarefasDblClick
     OnPrepareCanvas = sgTarefasPrepareCanvas
   end

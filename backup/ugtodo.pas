@@ -18,8 +18,8 @@ type
     sgTarefas: TStringGrid;
     procedure edTarefaKeyPress(Sender: TObject; var Key: char);
     procedure FormCreate(Sender: TObject);
-    procedure sgTarefasColRowExchanged(Sender: TObject; IsColumn: Boolean;
-      sIndex, tIndex: Integer);
+    procedure sgTarefasColRowMoved(Sender: TObject; IsColumn: Boolean; sIndex,
+      tIndex: Integer);
     procedure sgTarefasDblClick(Sender: TObject);
     procedure sgTarefasPrepareCanvas(sender: TObject; aCol, aRow: Integer;
       aState: TGridDrawState);
@@ -70,7 +70,7 @@ begin
 
 end;
 
-procedure TForm1.sgTarefasColRowExchanged(Sender: TObject; IsColumn: Boolean;
+procedure TForm1.sgTarefasColRowMoved(Sender: TObject; IsColumn: Boolean;
   sIndex, tIndex: Integer);
 begin
   sgTarefas.SaveToFile(todofn);
