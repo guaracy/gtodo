@@ -17,6 +17,7 @@ type
     Panel1: TPanel;
     sgTarefas: TStringGrid;
     procedure edTarefaKeyPress(Sender: TObject; var Key: char);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure sgTarefasColRowMoved(Sender: TObject; IsColumn: Boolean; sIndex,
       tIndex: Integer);
@@ -112,8 +113,6 @@ end;
 procedure TForm1.sgTarefasKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-{ TODO : Processar a tecla Del para excluir a tarefa }
-{ TODO : Processar Esc para desmarcar edição da tarefa }
 end;
 
 procedure TForm1.sgTarefasPrepareCanvas(sender: TObject; aCol, aRow: Integer;
@@ -129,7 +128,6 @@ end;
 
 procedure TForm1.sgTarefasSelection(Sender: TObject; aCol, aRow: Integer);
 begin
-  { TODO : Atualizar texto para a edição }
   if aCol=0 then exit;
   edtMode:=True;
   edTarefa.Text:=sgTarefas.Cells[1,sgTarefas.Row];
@@ -152,6 +150,16 @@ begin
   end;
   sgTarefas.SaveToFile(todofn);
   edTarefa.Text:='';
+end;
+
+procedure TForm1.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  { TODO : Processar a tecla Del para excluir a tarefa }
+  { TODO : Processar Esc para desmarcar edição da tarefa }
+    case Key of
+      VK_ESCAPE: begin edtMode:=False; edTarefa.Text:=''; end;
+      VK_UP: begin if sgTarefas.Row>1 then sgTarefas.Row:=sgTarefas.Row-1; end;
+    end;
 end;
 
 end.

@@ -41,8 +41,8 @@
         <goScrollToLastRow value="False"/>
       </options>
     </design>
-    <position topleftcol="1" topleftrow="1" col="1" row="1">
-      <selection left="1" top="1" right="1" bottom="1"/>
+    <position topleftcol="1" topleftrow="1" col="1" row="2">
+      <selection left="1" top="2" right="1" bottom="2"/>
     </position>
     <content>
       <cells cellcount="2">
