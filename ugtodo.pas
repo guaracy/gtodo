@@ -18,6 +18,8 @@ type
     sgTarefas: TStringGrid;
     procedure edTarefaKeyPress(Sender: TObject; var Key: char);
     procedure FormCreate(Sender: TObject);
+    procedure sgTarefasColRowMoved(Sender: TObject; IsColumn: Boolean; sIndex,
+      tIndex: Integer);
     procedure sgTarefasDblClick(Sender: TObject);
     procedure sgTarefasPrepareCanvas(sender: TObject; aCol, aRow: Integer;
       aState: TGridDrawState);
@@ -66,6 +68,12 @@ begin
   tDir := Trim(sOut);
   Caption := 'gtodo : (GIT) - '+tDir;
 
+end;
+
+procedure TForm1.sgTarefasColRowMoved(Sender: TObject; IsColumn: Boolean;
+  sIndex, tIndex: Integer);
+begin
+  sgTarefas.SaveToFile(todofn);
 end;
 
 procedure TForm1.sgTarefasDblClick(Sender: TObject);

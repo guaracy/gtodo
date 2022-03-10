@@ -46,8 +46,8 @@
     </position>
     <content>
       <cells cellcount="3">
-        <cell1 column="1" row="1" text="Exclusão de tarefa"/>
-        <cell2 column="1" row="2" text="Alteração de tarefa"/>
+        <cell1 column="1" row="1" text="Alteração de tarefa"/>
+        <cell2 column="1" row="2" text="Exclusão de tarefa"/>
         <cell3 column="1" row="3" text="- incluir push?"/>
       </cells>
     </content>

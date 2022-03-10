@@ -18,6 +18,8 @@ type
     sgTarefas: TStringGrid;
     procedure edTarefaKeyPress(Sender: TObject; var Key: char);
     procedure FormCreate(Sender: TObject);
+    procedure sgTarefasColRowExchanged(Sender: TObject; IsColumn: Boolean;
+      sIndex, tIndex: Integer);
     procedure sgTarefasDblClick(Sender: TObject);
     procedure sgTarefasPrepareCanvas(sender: TObject; aCol, aRow: Integer;
       aState: TGridDrawState);
@@ -68,6 +70,12 @@ begin
 
 end;
 
+procedure TForm1.sgTarefasColRowExchanged(Sender: TObject; IsColumn: Boolean;
+  sIndex, tIndex: Integer);
+begin
+  sgTarefas.SaveToFile(todofn);
+end;
+
 procedure TForm1.sgTarefasDblClick(Sender: TObject);
 var
   lst: TStringList;
@@ -80,7 +88,7 @@ begin
     lst := TStringList.Create();
     if FileExists(chgfn) then
       lst.LoadFromFile(chgfn);
-    lst.Insert(0,FormatDateTime('YYYYMMDD : ',now)+s);
+    lst.Insert(0,FormatDateTime('YYYY.MM.DD : ',now)+s);
     lst.SaveToFile(chgfn);
     lst.Free;
   end else exit;
