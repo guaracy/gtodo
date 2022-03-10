@@ -76,7 +76,7 @@ var
 begin
   if sgTarefas.RowCount=1 then exit;
   s:=sgTarefas.Cells[1,sgTarefas.Row];
-  if MessageDlg('Commit', s+#10#13'Do you wish to Commit?', mtConfirmation, [mbYes, mbNo],0) = mrYes then begin
+  if MessageDlg('Commit', s+#10#13'Deseja informar como concluída a tarefa?', mtConfirmation, [mbYes, mbNo],0) = mrYes then begin
     lst := TStringList.Create();
     if FileExists(chgfn) then
       lst.LoadFromFile(chgfn);

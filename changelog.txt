@@ -1,3 +1,4 @@
+20220309 : Alterado texto para confirmação de conclusão da tarefa
 20220309 : Colocar imagens no README
 20220309 : + Gerar imagens
 20220309 : testar push
