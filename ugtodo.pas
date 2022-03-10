@@ -22,11 +22,8 @@ type
     procedure sgTarefasColRowMoved(Sender: TObject; IsColumn: Boolean; sIndex,
       tIndex: Integer);
     procedure sgTarefasDblClick(Sender: TObject);
-    procedure sgTarefasKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState
-      );
     procedure sgTarefasPrepareCanvas(sender: TObject; aCol, aRow: Integer;
       aState: TGridDrawState);
-    procedure sgTarefasSelection(Sender: TObject; aCol, aRow: Integer);
   private
     tDir,
     cDir : string;
@@ -110,11 +107,6 @@ begin
   ShowMessage('COMMIT OK'#10#13+sOut);
 end;
 
-procedure TForm1.sgTarefasKeyUp(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-end;
-
 procedure TForm1.sgTarefasPrepareCanvas(sender: TObject; aCol, aRow: Integer;
   aState: TGridDrawState);
 begin
@@ -124,14 +116,6 @@ begin
     '-' : sgTarefas.Canvas.Font.Color:=clGreen;
     '+' : sgTarefas.Canvas.Font.Color:=clRed;
   end;
-end;
-
-procedure TForm1.sgTarefasSelection(Sender: TObject; aCol, aRow: Integer);
-begin
-  if aCol=0 then exit;
-  edtMode:=True;
-  edTarefa.Text:=sgTarefas.Cells[1,sgTarefas.Row];
-  edTarefa.SetFocus;
 end;
 
 procedure TForm1.edTarefaKeyPress(Sender: TObject; var Key: char);
@@ -158,6 +142,13 @@ begin
       VK_ESCAPE: begin edtMode:=False; edTarefa.Text:=''; end;
       VK_UP: begin if sgTarefas.Row>1 then sgTarefas.Row:=sgTarefas.Row-1; end;
       VK_DOWN: begin if sgTarefas.Row<sgTarefas.RowCount then sgTarefas.Row:=sgTarefas.Row+1; end;
+      VK_E:
+        begin
+          if not (ssCtrl in Shift) then exit;
+          edtMode:=True;
+          edTarefa.Text:=sgTarefas.Cells[1,sgTarefas.Row];
+          edTarefa.SetFocus;
+        end;
       VK_X:
         begin
           if not (ssCtrl in Shift) then exit;

@@ -42,4 +42,4 @@ Entre na pasta que você deseja controla e execute o gtodo.
 
 - **Exclusão de tarefa**: Pressione Ctrl+X para excluir a tarefa selecionada na grade.
 
-- **Alteração de tarefa**: Selecione a tarefa na grade, edite na linha de tarefas e pressione enter.
+- **Alteração de tarefa**: Selecione a tarefa na grade usando o mouse ou as setas para cima e baixo e pressione Ctrl+E. Altere a tarefa e pressione enter. Pressione Esc para cancelar o modo de edição.

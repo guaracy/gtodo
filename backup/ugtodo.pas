@@ -128,10 +128,6 @@ end;
 
 procedure TForm1.sgTarefasSelection(Sender: TObject; aCol, aRow: Integer);
 begin
-  if aCol=0 then exit;
-  edtMode:=True;
-  edTarefa.Text:=sgTarefas.Cells[1,sgTarefas.Row];
-  edTarefa.SetFocus;
 end;
 
 procedure TForm1.edTarefaKeyPress(Sender: TObject; var Key: char);
@@ -158,12 +154,20 @@ begin
       VK_ESCAPE: begin edtMode:=False; edTarefa.Text:=''; end;
       VK_UP: begin if sgTarefas.Row>1 then sgTarefas.Row:=sgTarefas.Row-1; end;
       VK_DOWN: begin if sgTarefas.Row<sgTarefas.RowCount then sgTarefas.Row:=sgTarefas.Row+1; end;
+      VK_E:
+        begin
+          if not (ssCtrl in Shift) then exit;
+          edtMode:=True;
+          edTarefa.Text:=sgTarefas.Cells[1,sgTarefas.Row];
+          edTarefa.SetFocus;
+        end;
       VK_X:
         begin
           if not (ssCtrl in Shift) then exit;
           if sgTarefas.Row<1 then exit;
           if MessageDlg('Commit', sgTarefas.Cells[1,sgTarefas.Row]+#10#13#10#13'Deseja excluir a tarefa?', mtConfirmation, [mbYes, mbNo],0) = mrYes then begin
             sgTarefas.DeleteRow(sgTarefas.Row);
+            edTarefa.Text:='';
             sgTarefas.SaveToFile(todofn);
           end;
       end;
