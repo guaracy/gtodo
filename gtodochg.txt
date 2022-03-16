@@ -1,0 +1,1 @@
+2022.03.16 : alterado nome do arquivo de mudanças de changelog.txt para gtodochg.txt

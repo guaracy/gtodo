@@ -2,7 +2,7 @@
 <CONFIG>
   <grid version="3">
     <saveoptions create="True" position="True" content="True"/>
-    <design columncount="2" rowcount="1" fixedcols="1" fixedrows="1" defaultcolwidth="40" isdefaultcolwidth="1" defaultrowheight="23" isdefaultrowheight="0" color="clWindow">
+    <design columncount="2" rowcount="1" fixedcols="1" fixedrows="1" defaultcolwidth="40" isdefaultcolwidth="1" defaultrowheight="22" isdefaultrowheight="0" color="clWindow">
       <columns columnsenabled="True" columncount="1">
         <column0>
           <index value="0"/>
@@ -16,7 +16,6 @@
       <options>
         <goFixedVertLine value="True"/>
         <goFixedHorzLine value="True"/>
-        <goFixedRowNumbering value="True"/>
         <goVertLine value="True"/>
         <goHorzLine value="True"/>
         <goRangeSelect value="True"/>

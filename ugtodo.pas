@@ -40,7 +40,7 @@ var
   Form1: TForm1;
 const
   todoname = 'gtodo.txt';
-  changelog = 'changelog.txt';
+  changelog = 'gtodochg.txt';
 
 implementation
 
