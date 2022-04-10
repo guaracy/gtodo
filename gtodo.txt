@@ -2,7 +2,7 @@
 <CONFIG>
   <grid version="3">
     <saveoptions create="True" position="True" content="True"/>
-    <design columncount="2" rowcount="2" fixedcols="1" fixedrows="1" defaultcolwidth="40" isdefaultcolwidth="1" defaultrowheight="23" isdefaultrowheight="0" color="clWindow">
+    <design columncount="2" rowcount="1" fixedcols="1" fixedrows="1" defaultcolwidth="40" isdefaultcolwidth="1" defaultrowheight="23" isdefaultrowheight="0" color="clWindow">
       <columns columnsenabled="True" columncount="1">
         <column0>
           <index value="0"/>
@@ -41,13 +41,8 @@
         <goScrollToLastRow value="False"/>
       </options>
     </design>
-    <position topleftcol="1" topleftrow="1" col="1" row="1">
-      <selection left="1" top="1" right="1" bottom="1"/>
+    <position topleftcol="1" topleftrow="1" col="1" row="0">
+      <selection left="1" top="0" right="1" bottom="0"/>
     </position>
-    <content>
-      <cells cellcount="1">
-        <cell1 column="1" row="1" text="incluir recuperação"/>
-      </cells>
-    </content>
   </grid>
 </CONFIG>
