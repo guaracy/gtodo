@@ -591,6 +591,11 @@ object Form1: TForm1
             Control = SpeedButton3
             WrapAfter = waAuto
             Index = 2
+          end        
+          item
+            Control = sbRecupera
+            WrapAfter = waAuto
+            Index = 3
           end>
         FlowLayout = tlTop
         FlowStyle = fsLeftRightTopBottom
@@ -621,6 +626,16 @@ object Form1: TForm1
           Anchors = []
           Caption = 'L'
           OnClick = SpeedButton3Click
+        end
+        object sbRecupera: TSpeedButton
+          Left = 75
+          Height = 22
+          Top = 6
+          Width = 23
+          Anchors = []
+          Caption = 'R'
+          Enabled = False
+          OnClick = sbRecuperaClick
         end
       end
     end

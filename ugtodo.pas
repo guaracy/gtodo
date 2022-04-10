@@ -22,6 +22,7 @@ type
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
+    sbRecupera: TSpeedButton;
     SynDiffSyn1: TSynDiffSyn;
     SynEdit1: TSynEdit;
     SynUNIXShellScriptSyn1: TSynUNIXShellScriptSyn;
@@ -39,6 +40,7 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure sbRecuperaClick(Sender: TObject);
     procedure TabSheet2Show(Sender: TObject);
   private
     tDir,
@@ -154,6 +156,10 @@ begin
   status:=2;
   SynEdit1.Highlighter:=SynDiffSyn1;
   TabSheet2Show(Self);
+end;
+
+procedure TForm1.sbRecuperaClick(Sender: TObject);
+begin
 end;
 
 procedure TForm1.TabSheet2Show(Sender: TObject);
