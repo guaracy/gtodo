@@ -159,7 +159,19 @@ begin
 end;
 
 procedure TForm1.sbRecuperaClick(Sender: TObject);
+var
+  sOut, s, h: String;
+  r: Boolean;
 begin
+  s:=SynEdit1.LineText;
+  h:=s.Split(' ')[0];
+  if MessageDlg('Reset', 'Resetar para?'#10#13+s, mtConfirmation, [mbYes, mbNo],0) = mrYes then begin
+    if not RunCommandInDir(cDir,'git',['reset','--hard',h],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]) then begin
+      ShowMessage('ERROR :  '+sOut);
+      exit;
+    end;
+    TabSheet2Show(Self);
+  end
 end;
 
 procedure TForm1.TabSheet2Show(Sender: TObject);
@@ -168,9 +180,9 @@ var
   function execGit:Boolean;
   begin
     case status of
-      0 : Result :=not RunCommandInDir(cDir,'git',['diff','-P','--compact-summary'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]);
-      1 : Result :=not RunCommandInDir(cDir,'git',['diff','-P'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]);
-      2 : Result :=not RunCommandInDir(cDir,'git',['log','-P','--oneline'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]);
+      0 : Result := RunCommandInDir(cDir,'git',['diff','-P','--compact-summary'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]);
+      1 : Result := RunCommandInDir(cDir,'git',['diff','-P'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]);
+      2 : Result := RunCommandInDir(cDir,'git',['log','-P','--oneline'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]);
     else
       sOut:='Indefinido';
       Result:= False;
@@ -178,7 +190,8 @@ var
   end;
 
 begin
-  if execGit then begin //not RunCommandInDir(cDir,'git',['diff','-P'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]) then begin
+  sbRecupera.Enabled:=status=2;
+  if not execGit then begin //not RunCommandInDir(cDir,'git',['diff','-P'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]) then begin
     ShowMessage('ERROR :  '+sOut);
     exit;
   end;

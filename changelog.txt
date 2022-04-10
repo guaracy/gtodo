@@ -1,3 +1,4 @@
+2022.04.09 : rotina para reset
 2022.04.09 : Botão para reset
 2022.04.09 : Inclusão de algumas visualizações das alterações
 2022.03.10 : Alteração do destino do executável e .gitignore
