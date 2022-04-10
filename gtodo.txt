@@ -2,7 +2,7 @@
 <CONFIG>
   <grid version="3">
     <saveoptions create="True" position="True" content="True"/>
-    <design columncount="2" rowcount="4" fixedcols="1" fixedrows="1" defaultcolwidth="40" isdefaultcolwidth="1" defaultrowheight="23" isdefaultrowheight="0" color="clWindow">
+    <design columncount="2" rowcount="6" fixedcols="1" fixedrows="1" defaultcolwidth="40" isdefaultcolwidth="1" defaultrowheight="23" isdefaultrowheight="0" color="clWindow">
       <columns columnsenabled="True" columncount="1">
         <column0>
           <index value="0"/>
@@ -45,10 +45,12 @@
       <selection left="1" top="3" right="1" bottom="3"/>
     </position>
     <content>
-      <cells cellcount="3">
+      <cells cellcount="5">
         <cell1 column="1" row="1" text="+ tarefa importante"/>
         <cell2 column="1" row="2" text="tarefa normal"/>
-        <cell3 column="1" row="3" text="- tarefa irrelevante"/>
+        <cell3 column="1" row="3" text="- tarefa baixa prioridade"/>
+        <cell4 column="1" row="4" text="tarefa normal"/>
+        <cell5 column="1" row="5" text="tarefa normal"/>
       </cells>
     </content>
   </grid>

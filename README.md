@@ -32,8 +32,10 @@ Entre na pasta que você deseja controla e execute o gtodo.
 1. Menu -> Ferramentas -> gToDo (ou o nome que você colocou)
    ![](images/mnuexecutargtodo.png)
 
-2. gtodo
-   ![](images/gtodo.png)
+#### Tarefas
+
+![](images/gtodo.png)
+
 - No título da janela aparece (LOCAL) ou (GIT), conforme a pasta que você estiver trabalhando e o caminho completo.
 
 - **Incluir tarefa**: Em **1** você digita a tarefa que deverá ser executada e pressiona enter para incluir na grade. Se a tarefa iniciar com mais, será mostrada em vermelho, se tiver um hífem será mostrada em verde ou preta caso contrário. Apenas para uma noção de prioridade alta, média e baixa. As tarefas são incluídas no final da lista mas você podera arrastar uma linha para uma outra posição. 
@@ -43,3 +45,17 @@ Entre na pasta que você deseja controla e execute o gtodo.
 - **Exclusão de tarefa**: Pressione Ctrl+X para excluir a tarefa selecionada na grade.
 
 - **Alteração de tarefa**: Selecione a tarefa na grade usando o mouse ou as setas para cima e baixo e pressione Ctrl+E. Altere a tarefa e pressione enter. Pressione Esc para cancelar o modo de edição.
+
+#### Status
+
+![](images/gtodo-s.png)
+
+- Mostra um resumo do que foi alterado desde o último commit. Pode ser vista pressionando o botão S
+
+![](images/gtodo-d.png)
+
+- Mostra as alterações efetuadas desde o último commit. É possível expandir os ítens para ver o que foi alterado em cada arquivo. Pode ser vista pressionando o botão D
+
+![](images/gtodo-l.png)
+
+- Mostra o log do git com cada commit efetuado. Quando visível (botão L), o botão R é habilitado e permite que se faça um reset retornando ao estado do commit especificado. Todos os commits posteriores serão excluídos. Para recuperar, você deve ler o manual do Git e deve efetuar os comandos em um terminal. A dica é `git reflog` e, por exemplo, `git reset HEAD@{3}`.

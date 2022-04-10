@@ -46,9 +46,10 @@ object Form1: TForm1
       Caption = 'Tarefas'
       ClientHeight = 230
       ClientWidth = 771
+      OnShow = TabSheet1Show
       object sgTarefas: TStringGrid
         Left = 0
-        Height = 214
+        Height = 230
         Top = 0
         Width = 771
         Align = alClient

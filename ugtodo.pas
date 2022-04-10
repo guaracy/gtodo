@@ -42,6 +42,7 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure sbRecuperaClick(Sender: TObject);
+    procedure TabSheet1Show(Sender: TObject);
     procedure TabSheet2Show(Sender: TObject);
   private
     tDir,
@@ -175,6 +176,12 @@ begin
   end
 end;
 
+procedure TForm1.TabSheet1Show(Sender: TObject);
+begin
+  status:=0;
+  StatusBar1.Visible:=True;
+end;
+
 procedure TForm1.TabSheet2Show(Sender: TObject);
 var
   sOut: string;
@@ -191,6 +198,7 @@ var
   end;
 
 begin
+  StatusBar1.Visible:=False;
   sbRecupera.Enabled:=status=2;
   if not execGit then begin //not RunCommandInDir(cDir,'git',['diff','-P'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]) then begin
     ShowMessage('ERROR :  '+sOut);
