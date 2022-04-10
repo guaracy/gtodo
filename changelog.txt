@@ -1,3 +1,5 @@
+2022.04.09 : Inclusão de algumas visualizações das alterações
+2022.03.10 : Alteração do destino do executável e .gitignore
 2022.03.10 : Alteração no modo de edição de tarefas. Selecione a tarefa e pressione Ctrl+E
 2022.03.10 : Alterações  no README
 2022.03.10 : Ctrl+X exclui tarefa

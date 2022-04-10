@@ -5,8 +5,9 @@ unit ugtodo;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  Grids, process, LCLType;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls,
+  Grids, process, LCLType, ComCtrls, Buttons, SynEdit, SynHighlighterDiff,
+  synhighlighterunixshellscript;
 
 type
 
@@ -14,9 +15,20 @@ type
 
   TForm1 = class(TForm)
     edTarefa: TLabeledEdit;
+    FlowPanel1: TFlowPanel;
+    PageControl1: TPageControl;
     Panel1: TPanel;
     sgTarefas: TStringGrid;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    SynDiffSyn1: TSynDiffSyn;
+    SynEdit1: TSynEdit;
+    SynUNIXShellScriptSyn1: TSynUNIXShellScriptSyn;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
     procedure edTarefaKeyPress(Sender: TObject; var Key: char);
+    procedure FormCreate(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure sgTarefasColRowMoved(Sender: TObject; IsColumn: Boolean; sIndex,
@@ -24,6 +36,10 @@ type
     procedure sgTarefasDblClick(Sender: TObject);
     procedure sgTarefasPrepareCanvas(sender: TObject; aCol, aRow: Integer;
       aState: TGridDrawState);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure TabSheet2Show(Sender: TObject);
   private
     tDir,
     cDir : string;
@@ -31,7 +47,6 @@ type
     todofn:string;
     edtMode,
     notGit:Boolean;
-
   public
 
   end;
@@ -40,7 +55,8 @@ var
   Form1: TForm1;
 const
   todoname = 'gtodo.txt';
-  changelog = 'gtodochg.txt';
+  changelog = 'changelog.txt';
+  status : integer = 0;
 
 implementation
 
@@ -118,6 +134,51 @@ begin
   end;
 end;
 
+procedure TForm1.SpeedButton1Click(Sender: TObject);
+begin
+  status:=0;
+  SynEdit1.Highlighter:=SynUNIXShellScriptSyn1;
+  TabSheet2Show(Self);
+end;
+
+procedure TForm1.SpeedButton2Click(Sender: TObject);
+begin
+  status:=1;
+  SynEdit1.Highlighter:=SynDiffSyn1;
+  TabSheet2Show(Self);
+  SynEdit1.FoldAll(1);
+end;
+
+procedure TForm1.SpeedButton3Click(Sender: TObject);
+begin
+  status:=2;
+  SynEdit1.Highlighter:=SynDiffSyn1;
+  TabSheet2Show(Self);
+end;
+
+procedure TForm1.TabSheet2Show(Sender: TObject);
+var
+  sOut: string;
+  function execGit:Boolean;
+  begin
+    case status of
+      0 : Result :=not RunCommandInDir(cDir,'git',['diff','-P','--compact-summary'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]);
+      1 : Result :=not RunCommandInDir(cDir,'git',['diff','-P'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]);
+      2 : Result :=not RunCommandInDir(cDir,'git',['log','-P','--oneline'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]);
+    else
+      sOut:='Indefinido';
+      Result:= False;
+    end;
+  end;
+
+begin
+  if execGit then begin //not RunCommandInDir(cDir,'git',['diff','-P'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]) then begin
+    ShowMessage('ERROR :  '+sOut);
+    exit;
+  end;
+  SynEdit1.Lines.Text:=sOut;
+end;
+
 procedure TForm1.edTarefaKeyPress(Sender: TObject; var Key: char);
 var
   s: string;
@@ -134,6 +195,11 @@ begin
   end;
   sgTarefas.SaveToFile(todofn);
   edTarefa.Text:='';
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  PageControl1.PageIndex:=0;
 end;
 
 procedure TForm1.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);

@@ -1,2 +1,4 @@
-backup/
-lib/
+backup/**
+lib/**
+bin/**
+
