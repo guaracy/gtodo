@@ -23,6 +23,7 @@ type
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
     sbRecupera: TSpeedButton;
+    StatusBar1: TStatusBar;
     SynDiffSyn1: TSynDiffSyn;
     SynEdit1: TSynEdit;
     SynUNIXShellScriptSyn1: TSynUNIXShellScriptSyn;

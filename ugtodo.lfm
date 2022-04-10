@@ -35,7 +35,7 @@ object Form1: TForm1
   end
   object PageControl1: TPageControl
     Left = 0
-    Height = 277
+    Height = 260
     Top = 71
     Width = 781
     ActivePage = TabSheet2
@@ -44,7 +44,7 @@ object Form1: TForm1
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = 'Tarefas'
-      ClientHeight = 247
+      ClientHeight = 230
       ClientWidth = 771
       object sgTarefas: TStringGrid
         Left = 0
@@ -68,12 +68,12 @@ object Form1: TForm1
     end
     object TabSheet2: TTabSheet
       Caption = 'Status'
-      ClientHeight = 247
+      ClientHeight = 230
       ClientWidth = 771
       OnShow = TabSheet2Show
       inline SynEdit1: TSynEdit
         Left = 0
-        Height = 213
+        Height = 196
         Top = 34
         Width = 771
         Align = alClient
@@ -639,6 +639,14 @@ object Form1: TForm1
         end
       end
     end
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 17
+    Top = 331
+    Width = 781
+    Panels = <>
+    SimpleText = '[C-X] Excluir  [C-E] Editar  [D-click] Commit'
   end
   object SynDiffSyn1: TSynDiffSyn
     Enabled = False
