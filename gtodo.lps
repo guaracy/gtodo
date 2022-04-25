@@ -19,8 +19,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="127"/>
-        <CursorPos Y="143"/>
+        <TopLine Value="205"/>
+        <CursorPos Y="232"/>
         <UsageCount Value="43"/>
         <Bookmarks Count="2">
           <Item0 X="25" Y="103" ID="1"/>
@@ -38,11 +38,10 @@
       </Unit2>
       <Unit3>
         <Filename Value="..\..\..\..\..\usr\share\fpcsrc\3.2.0\rtl\objpas\classes\classesh.inc"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="91"/>
         <CursorPos X="44" Y="101"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit3>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">

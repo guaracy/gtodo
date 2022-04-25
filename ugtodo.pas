@@ -60,7 +60,7 @@ var
   Form1: TForm1;
 const
   todoname = 'gtodo.txt';
-  changelog = 'changelog.txt';
+  changelog = 'changelog-git.txt';
   status : integer = 0;
 
 implementation
@@ -217,21 +217,24 @@ procedure TForm1.edTarefaKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 var
   s: string;
+  ix:integer;
 begin
   if Key <> 13 then exit;
   s:=Trim(edTarefa.Text);
   if s='' then exit;
   if edtMode then begin
-    sgTarefas.Cells[1,sgTarefas.Row]:=s;
+    ix:=sgTarefas.Row;
+    sgTarefas.Cells[1,ix]:=s;
     edtMode:=False;
   end else begin
     sgTarefas.RowCount:=sgTarefas.RowCount+1;
-    sgTarefas.Cells[1,sgTarefas.RowCount-1]:=s;
+    ix:=sgTarefas.RowCount-1;
+    sgTarefas.Cells[1,ix]:=s;
   end;
   sgTarefas.SaveToFile(todofn);
   edTarefa.Text:='';
   if ssCtrl in Shift then
-    Commit(sgTarefas.RowCount-1);
+    Commit(ix);
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
