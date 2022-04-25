@@ -1,3 +1,4 @@
+2022.04.25 : Ctrl+Enter faz commit da tarefa entrada imediatamente
 2022.04.25 : Rotina de commit independente para ser chamada também por Ctrl+Enter
 2022.04.25 : KeyPress -> KeyUp (Ctrl = commit)
 2022.04.10 : incluir barra de status com atalhos

@@ -101,8 +101,7 @@ end;
 procedure TForm1.sgTarefasDblClick(Sender: TObject);
 begin
   if sgTarefas.RowCount=1 then exit;
-  if not Commit(sgTarefas.Row) then
-    exit;
+  Commit(sgTarefas.Row);
 end;
 
 procedure TForm1.sgTarefasPrepareCanvas(sender: TObject; aCol, aRow: Integer;
@@ -141,7 +140,6 @@ end;
 procedure TForm1.sbRecuperaClick(Sender: TObject);
 var
   sOut, s, h: String;
-  r: Boolean;
 begin
   s:=SynEdit1.LineText;
   h:=s.Split(' ')[0];
@@ -191,6 +189,7 @@ var
   sOut: string;
   s: String;
 begin
+  Result:=True;
   s:=sgTarefas.Cells[1,ix];
   if MessageDlg('Commit', s+#10#13#10#13'Deseja informar como concluída a tarefa?', mtConfirmation, [mbYes, mbNo],0) = mrYes then begin
     lst := TStringList.Create();
@@ -231,6 +230,8 @@ begin
   end;
   sgTarefas.SaveToFile(todofn);
   edTarefa.Text:='';
+  if ssCtrl in Shift then
+    Commit(sgTarefas.RowCount-1);
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
