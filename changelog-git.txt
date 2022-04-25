@@ -1,1 +1,27 @@
 2022.04.25 : Ctrl+Enter na edição
+2022.04.25 : Ctrl+Enter faz commit da tarefa entrada imediatamente
+2022.04.25 : Rotina de commit independente para ser chamada também por Ctrl+Enter
+2022.04.25 : KeyPress -> KeyUp (Ctrl = commit)
+2022.04.10 : incluir barra de status com atalhos
+2022.04.10 : incluir recuperação
+2022.04.09 : rotina para reset
+2022.04.09 : Botão para reset
+2022.04.09 : Inclusão de algumas visualizações das alterações
+2022.03.10 : Alteração do destino do executável e .gitignore
+2022.03.10 : Alteração no modo de edição de tarefas. Selecione a tarefa e pressione Ctrl+E
+2022.03.10 : Alterações  no README
+2022.03.10 : Ctrl+X exclui tarefa
+2022.03.10 : Esc limpa edição - Up/Down movem cursor grid
+2022.03.10 : Alteração de tarefa
+2022.03.09 : Alterações no README
+2022.03.09 : Gravar novo vídeo
+2022.03.09 : Gravar vídeo
+2022.03.09 : Mais espaço na confirmação da conclusão da tarefa
+2022.03.09 : Mudança de linha na grade regrava tarefas para mostrar nova situação
+2022.03.09 : Alteração no formato da data gravada no changelog.txt
+2022.03.09 : Alterado texto para confirmação de conclusão da tarefa
+2022.03.09 : Colocar imagens no README
+2022.03.09 : + Gerar imagens
+2022.03.09 : testar push
+2022.03.09 : Verificar mensagem de erro no Linux
+2022.03.09 : criar .gitignore
