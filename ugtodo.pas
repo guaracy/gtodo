@@ -29,7 +29,7 @@ type
     SynUNIXShellScriptSyn1: TSynUNIXShellScriptSyn;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
-    procedure edTarefaKeyPress(Sender: TObject; var Key: char);
+    procedure edTarefaKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
@@ -51,6 +51,7 @@ type
     todofn:string;
     edtMode,
     notGit:Boolean;
+    function Commit(ix:integer):Boolean;
   public
 
   end;
@@ -98,33 +99,10 @@ begin
 end;
 
 procedure TForm1.sgTarefasDblClick(Sender: TObject);
-var
-  lst: TStringList;
-  sOut: string;
-   s: String;
 begin
   if sgTarefas.RowCount=1 then exit;
-  s:=sgTarefas.Cells[1,sgTarefas.Row];
-  if MessageDlg('Commit', s+#10#13#10#13'Deseja informar como concluída a tarefa?', mtConfirmation, [mbYes, mbNo],0) = mrYes then begin
-    lst := TStringList.Create();
-    if FileExists(chgfn) then
-      lst.LoadFromFile(chgfn);
-    lst.Insert(0,FormatDateTime('YYYY.MM.DD : ',now)+s);
-    lst.SaveToFile(chgfn);
-    lst.Free;
-  end else exit;
-  sgTarefas.DeleteRow(sgTarefas.Row);
-  sgTarefas.SaveToFile(todofn);
-  if notGit then exit;
-  if not RunCommandInDir(cDir,'git',['add','.'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]) then begin
-    ShowMessage('ERROR : git add .'+sOut);
+  if not Commit(sgTarefas.Row) then
     exit;
-  end;
-  if not RunCommandInDir(cDir,'git',['commit','-m',s],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]) then begin
-    ShowMessage('ERROR : git commit -m '+QuotedStr(s)+sOut);
-    exit;
-  end;
-  ShowMessage('COMMIT OK'#10#13+sOut);
 end;
 
 procedure TForm1.sgTarefasPrepareCanvas(sender: TObject; aCol, aRow: Integer;
@@ -207,11 +185,41 @@ begin
   SynEdit1.Lines.Text:=sOut;
 end;
 
-procedure TForm1.edTarefaKeyPress(Sender: TObject; var Key: char);
+function TForm1.Commit(ix: integer): Boolean;
+var
+  lst: TStringList;
+  sOut: string;
+  s: String;
+begin
+  s:=sgTarefas.Cells[1,ix];
+  if MessageDlg('Commit', s+#10#13#10#13'Deseja informar como concluída a tarefa?', mtConfirmation, [mbYes, mbNo],0) = mrYes then begin
+    lst := TStringList.Create();
+    if FileExists(chgfn) then
+      lst.LoadFromFile(chgfn);
+    lst.Insert(0,FormatDateTime('YYYY.MM.DD : ',now)+s);
+    lst.SaveToFile(chgfn);
+    lst.Free;
+  end else exit;
+  sgTarefas.DeleteRow(sgTarefas.Row);
+  sgTarefas.SaveToFile(todofn);
+  if notGit then exit;
+  if not RunCommandInDir(cDir,'git',['add','.'],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]) then begin
+    ShowMessage('ERROR : git add .'+sOut);
+    exit;
+  end;
+  if not RunCommandInDir(cDir,'git',['commit','-m',s],sOut,[poWaitOnExit,poStderrToOutPut,poNoConsole]) then begin
+    ShowMessage('ERROR : git commit -m '+QuotedStr(s)+sOut);
+    exit;
+  end;
+  ShowMessage('COMMIT OK'#10#13+sOut);
+end;
+
+procedure TForm1.edTarefaKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
 var
   s: string;
 begin
-  if Key <> #13 then exit;
+  if Key <> 13 then exit;
   s:=Trim(edTarefa.Text);
   if s='' then exit;
   if edtMode then begin
