@@ -38,7 +38,7 @@ Entre na pasta que você deseja controla e execute o gtodo.
 
 - No título da janela aparece (LOCAL) ou (GIT), conforme a pasta que você estiver trabalhando e o caminho completo.
 
-- **Incluir tarefa**: Em **1** você digita a tarefa que deverá ser executada e pressiona enter para incluir na grade. Se a tarefa iniciar com mais, será mostrada em vermelho, se tiver um hífem será mostrada em verde ou preta caso contrário. Apenas para uma noção de prioridade alta, média e baixa. As tarefas são incluídas no final da lista mas você podera arrastar uma linha para uma outra posição. 
+- **Incluir tarefa**: Em **1** você digita a tarefa que deverá ser executada e pressiona enter para incluir na grade. Se a tarefa iniciar com mais, será mostrada em vermelho, se tiver um hífem será mostrada em verde ou preta caso contrário. Apenas para uma noção de prioridade alta, média e baixa. As tarefas são incluídas no final da lista mas você podera arrastar uma linha para uma outra posição. Se for pressionado Ctrl+Enter, o commit será imediato.
 
 - **Finaliza tarefa**: Basta um duplo clique sobre a tarefa e confirmar se deseja que ela seja completada. Em caso afirmativo, ela será retirada da lista e colocada no início do arquivo *changelog.txt* com a data no formato anomêsdia - tarefa. Se for git, executa um *git add .* e *git commit -m tarefa*.
 
