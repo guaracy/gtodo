@@ -1,3 +1,4 @@
+2022.04.25 : KeyPress -> KeyUp (Ctrl = commit)
 2022.04.10 : incluir barra de status com atalhos
 2022.04.10 : incluir recuperação
 2022.04.09 : rotina para reset
